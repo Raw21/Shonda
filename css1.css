@@ -164,7 +164,7 @@ html, body {
 
 .btn-primary {
     color: white;
-    background-color: #56CCF2;
+    background-color: #C5B35B;
     border: none;
     border-radius: .3em;
     font-weight: bold;
@@ -233,7 +233,7 @@ html, body {
 
 .shop-item-price {
     flex-grow: 1;
-    color: purple;
+    color: white;
 }
 
 .shop-items {
