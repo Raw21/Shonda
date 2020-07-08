@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Metal+Mania");
 
 font-face {
     font-family: "Booter - Zero Zero";
-    src: url("Fonts/Booter - Zero Zero.woff") format("woff"),
-         url("Fonts/Booter - Zero Zero.woff2") format("woff2");
-         
+    src: url("Fonts/Booter - Zero Zero.woff") format("woff"), url("Fonts/Booter - Zero Zero.woff2") format("woff2");
+
     font-weight: normal;
     font-style: normal;
 }
@@ -13,34 +12,40 @@ font-face {
 html {
     box-sizing: border-box;
     font-family: Raleway;
-    color: #C5B358;
+    color: #c5b358;
 }
-header, footer {
-    font-family: 'Parisienne', cursive;
+header,
+footer {
+    font-family: "Parisienne", cursive;
 }
-
-html, body {
-    margin: 0;
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+html,
+body {
+    /*    margin: 0;
     padding: 0;
-    min-height: 100%;
+*/
     background-image: url("https://i.postimg.cc/Ghq7znfK/thumbnail-Shonda.png");
     background-attachment: fixed;
-    background-color: black;
+    background-color: black !important;
     background-position: center;
 }
 
-.nav ul {
+.nav-cust ul {
     margin: 0;
 }
 
-.nav li {
+.nav-cust li {
     display: inline;
 }
 
-.nav a {
+.nav-cust a {
     display: inline-block;
-    padding: .5em;
-    color: #C5B358;
+    padding: 0.5em;
+    color: #c5b358;
     text-decoration: none;
 }
 
@@ -48,15 +53,16 @@ html, body {
     text-align: center;
     font-size: 1.1em;
     font-weight: lighter;
-    border-bottom: 1px solid rgba(255, 255, 255, .3)
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .main-nav li {
     padding: 0 5%;
+    text-align: center;
 }
 
-.nav a:hover {
-    background-color: rgba(255, 255, 255, .3)
+.nav-cust a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .main-header {
@@ -73,7 +79,7 @@ html, body {
     margin: 0;
     font-size: 4em;
     font-weight: normal;
-    color: #C5B358;
+    color: #c5b358;
 }
 
 .band-name-large {
@@ -81,18 +87,13 @@ html, body {
 }
 
 .content-section {
-    margin: 1em;
+    max-width: 1500px;
 }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 1.5em;
-}
 .section-header {
     font-family: "Metal Mania";
     font-weight: normal;
-    color: #C5B358;
+    color: #c5b358;
     text-align: center;
     font-size: 2.5em;
 }
@@ -108,36 +109,30 @@ html, body {
 .main-footer {
     background-color: purple;
     color: white;
-    padding: .25em 0;
+    padding: 0.25em 0;
 }
 
 .main-footer-container {
     align-items: center;
     text-align: center;
-} 
+}
 
 .main-footer-container ul {
     flex-grow: 1;
     text-align: center;
 }
 
-
-
-
-
-
-
 .btn {
     text-align: center;
     vertical-align: middle;
-    padding: .67em .67em;
+    padding: 0.67em 0.67em;
     cursor: pointer;
 }
 
 .btn-header {
-    margin: .5em 15% 2em 15%;
+    margin: 0.5em 15% 2em 15%;
     color: white;
-    border: 2px solid #2D9CDB;
+    border: 2px solid #2d9cdb;
     background-color: purple;
     border-radius: 0;
     font-size: 1.5em;
@@ -147,13 +142,13 @@ html, body {
 }
 
 .btn-header:hover {
-    background-color: rgba(255, 255, 255, .3);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .btn-play {
     display: block;
     margin: 0 auto;
-    color: #2D9CDB;
+    color: #2d9cdb;
     font-size: 4em;
     border-radius: 50%;
     width: 100px;
@@ -162,84 +157,49 @@ html, body {
     text-align: center;
 }
 
-.btn-primary {
+.btn-primary-cust {
     color: white;
-    background-color: #C5B35B;
+    background-color: #c5b35b;
     border: none;
-    border-radius: .3em;
+    border-radius: 0.3em;
     font-weight: bold;
 }
-
-.btn-primary:hover {
-    background-color: #2D9CDB;
+.btn-primary-cust:focus {
+    box-shadow: 0 0 0 0.2rem #800080 !important;
 }
-
-.tour-row {
-    border-bottom: 1px solid black;
-    padding-bottom: 1em;
-    margin-bottom: 1em;
+.btn-primary-cust:hover {
+    background-color: #aebcc4;
 }
-
-.tour-row:last-child {
-    border: none;
-}
-
-.tour-item {
-    display: inline-block;
-    padding-right: .5em;
-}
-
-.tour-date {
-    color: #C5B358;
-    width: 11%;
-    font-weight: bold;
-}
-
-.tour-city {
-    width: 24%;
-}
-
-.tour-arena {
-    width: 42%;
-}
-
 .tour-btn {
     max-width: 19%;
 }
 
 .shop-item {
-    margin: 30px;
 }
 
 .shop-item-title {
-    display: block;
-    width: 100%;
-    text-align: center;
     font-weight: bold;
     font-size: 1.5em;
-    color: #C5B358;
-    margin-bottom: 15px;
+    color: #c5b358;
 }
 
 .shop-item-image {
-    height: 250px;
+    max-height: 250px;
 }
 
 .shop-item-details {
     display: flex;
-    align-items: center;
-    padding: 5px;
+    justify-content: space-around;
+
 }
 
 .shop-item-price {
-    flex-grow: 1;
+
     color: white;
 }
 
 .shop-items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+
 }
 
 .cart-header {
@@ -274,10 +234,9 @@ html, body {
 .cart-quantity {
     width: 35%;
 }
-
 .cart-item-title {
     color: white;
-    margin-left: .5em;
+    margin-left: 0.5em;
     font-size: 1.2em;
 }
 
@@ -291,7 +250,7 @@ html, body {
     color: white;
     background-color: purple;
     border: none;
-    border-radius: .3em;
+    border-radius: 0.3em;
     font-weight: bold;
 }
 
@@ -303,7 +262,7 @@ html, body {
     height: 34px;
     width: 50px;
     border-radius: 5px;
-    border: 1px solid #56CCF2;
+    border: 1px solid #56ccf2;
     background-color: white;
     color: #333;
     padding: 0;
@@ -321,7 +280,7 @@ html, body {
 }
 
 .cart-total {
-    text-align: end;
+    /*   text-align: end; */
     margin-top: 10px;
     margin-right: 10px;
 }
@@ -343,4 +302,3 @@ html, body {
     margin: 40px auto 80px auto;
     font-size: 1.75em;
 }
-
