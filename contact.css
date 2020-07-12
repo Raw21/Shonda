@@ -1,23 +1,75 @@
+.nav-cust ul {
+  margin: 0;
+}
+
+.nav-cust li {
+  display: inline;
+}
+
+.nav-cust a {
+  display: inline-block;
+  padding: 0.5em;
+  color: #c5b358;
+  text-decoration: none;
+}
+
+.main-nav {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: lighter;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.main-nav li {
+  padding: 0 5%;
+  text-align: center;
+}
+
+.nav-cust a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.main-header {
+  background-color: purple;
+  background-image: url("Images/Header Background.jpg");
+
+  background-blend-mode: multiply;
+  background-size: cover;
+  padding-bottom: 30px;
+}
+.band-name {
+  text-align: center;
+  font-size: 4em;
+  font-weight: normal;
+  color: #c5b358;
+}
+
+.band-name-large {
+  font-size: 8em;
+}
+
+header,
+footer {
+    font-family: "Parisienne", cursive;
+}
 :root{
   --font-color:#555;
   --font-hover-color:orange;
 }
 body{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
   font-family:"Raleway", sans-serif;
   background-image: url("https://i.postimg.cc/Ghq7znfK/thumbnail-Shonda.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: black;
+  background-color: black !important;
   background-position: center;
-  
 
-
-
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
+
+/*
 .forh-group{
   font-size:.75em;
   color:var(--font-color);
@@ -35,6 +87,7 @@ body{
   font-size:1.25em;
   transition:all .6s;
 }
+
 .form-control::placeholder{
   color: purple;
 }
@@ -53,22 +106,11 @@ body{
 .form-control:valid:focus{
   border-color:green;
 }
+*/
 
-.btn{
-  background: 0 0 purple;
-  border:1px solid purple;
-  border-radius:3px;
-  color:var(--font-color);
-  font-size:1em;
-  padding:10 50px;
-  text-transform:uppercase;
-}
 .btn:hover{
   border-color:var(--font-hover-color);
   color:var(--font-hover-color);
-}
-textarea{
-  resize:none;
 }
 
 
@@ -77,4 +119,34 @@ textarea{
   opacity:1;
   transform:translateX(0px);
 
+}
+
+.btn-primary-cust {
+  color: white;
+  background-color: #c5b35b;
+  border: none;
+  border-radius: 0.3em;
+  font-weight: bold;
+}
+.btn-primary-cust:focus {
+  box-shadow: 0 0 0 0.2rem #800080 !important;
+}
+.btn-primary-cust:hover {
+  background-color: #aebcc4;
+}
+
+.main-footer {
+  background-color: purple;
+  color: white;
+  padding: 0.25em 0;
+}
+
+.main-footer-container {
+  align-items: center;
+  text-align: center;
+}
+
+.main-footer-container ul {
+  flex-grow: 1;
+  text-align: center;
 }

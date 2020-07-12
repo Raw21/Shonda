@@ -1,36 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="contact.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
-</head>
-<body>
-<form name= "contact" method="POST" data-netlify="true">
-    <div class="fields">
-      <div class="field half">
-        <input type="text" name="name" id="name" placeholder="Name" />
-      </div>
-      <div class="field half">
-        <input type="email" name="email" id="email" placeholder="Email" />
-      </div>
-      <div class="field">
-        <textarea name="message" id="message" placeholder="Message" rows="7"></textarea>
-      </div>
-      <div class="field"></div>
-        <div data-netlify-recaptcha="true">
-        </div>
-    </div>
-    <ul class="actions">
-      <li><input type="submit" value="Send Message" class="button primary" /></li>
-    </ul>
-  </form>
-</div>
-      
-      
-      
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Sache's Secrets</title>
+  <link rel="stylesheet" href="contact.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <header class="main-header">
+    <nav class="main-nav nav-cust">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+    <h1 class="band-name band-name-large">Sache's Secrets</h1>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <form class="form-group" name="contact" method="POST" data-netlify="true">
+            <div class="fields">
+              <div class="field half my-2">
+                <input class="form-control" type="text" name="name" id="name" placeholder="Name" />
+              </div>
+              <div class="field half my-2">
+                <input class="form-control" type="email" name="email" id="email" placeholder="Email" />
+              </div>
+              <div class="field my-2">
+                <textarea class="form-control" name="message" id="message" placeholder="Message" rows="7"></textarea>
+              </div>
+              <div class="field"></div>
+              <div data-netlify-recaptcha="true">
+              </div>
+            </div>
+            <ul class="actions d-flex justify-content-end">
+              <li><input type="submit" value="Send Message" class="btn btn-primary-cust shop-item-button m-2" /></li>
+            </ul>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+  <footer class="main-footer">
+    <div class="container main-footer-container">
+      <h3 class="band-name">Sache's Secrets</h3>
+      <ul class="nav footer-nav"></ul>
+
+  </footer>
+  <script src="contact.js" async></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+-->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -76,6 +76,7 @@ function removeCartItem(event) {
     var buttonClicked = event.target
     buttonClicked.parentElement.parentElement.remove()
     updateCartTotal()
+    shouldRemoveShipping();
 }
 
 function quantityChanged(event) {
@@ -124,7 +125,53 @@ function addItemToCart(title, price, imageSrc) {
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
-    cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
+    cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged);
+    includeShipping();
+}
+
+function includeShipping() {
+    let cartShipping = document.getElementsByClassName('cart-shipping');
+    let cost = 4.99;
+    if (document.getElementsByClassName('cart-row').length > 4) {
+        cost = 8.99;
+    }
+
+    if (!cartShipping[0].getElementsByClassName('shipping').length) {
+        var cartRow = document.createElement('div')
+        cartRow.classList.add('cart-row')
+        let cartItems = document.getElementsByClassName('cart-items');
+
+
+        var cartRowContents = `
+        <div class="cart-item cart-column shipping">
+            <img class="cart-item-image shipping-image" src="./shipping-fast.svg" width="100" height="100">
+            <span class="cart-item-title">Shipping</span>
+        </div>
+        <span class="cart-price cart-column shipping-cost">$${cost}</span>
+        <div class="cart-quantity cart-column">
+
+        </div>
+        `
+        cartRow.innerHTML = cartRowContents
+        cartShipping[0].append(cartRow)
+    }
+    document.getElementsByClassName('shipping-cost')[0].innerText = `$${cost}`;
+}
+
+function shouldRemoveShipping() {
+    let cartItems = document.getElementsByClassName('cart-items')[0];
+    if (!cartItems.getElementsByClassName('cart-row').length) {
+        let cartShipping = document.getElementsByClassName('cart-shipping')[0];
+        while (cartShipping.childNodes) {
+            cartShipping.removeChild(cartShipping.childNodes[0]);
+        }
+    }
+    let cost = 4.99;
+    if (document.getElementsByClassName('cart-row').length > 4) {
+        cost = 8.99;
+    }
+    document.getElementsByClassName('shipping-cost')[0].innerText = `$${cost}`;
+
 }
 
 function updateCartTotal() {
@@ -139,6 +186,9 @@ function updateCartTotal() {
         var quantity = quantityElement.value
         total = total + (price * quantity)
     }
+
+    var shipping = document.getElementsByClassName('shipping-cost')[0];
+    total += parseFloat(shipping.innerText.replace('$', ''));
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
 }
@@ -157,6 +207,17 @@ function collectCartItems() {
         });
         //Make sure the calculated cost matches amount * quanitity fo each row.
     });
+
+    var cartShipping = document.getElementsByClassName('cart-shipping')[0];
+    items.push({
+        name: cartShipping.getElementsByClassName('cart-item-title')[0].innerText,
+        unit_amount: {
+            currency_code: 'USD',
+            value: parseFloat(cartShipping.getElementsByClassName('cart-price')[0].innerText.replace('$', '')).toFixed(2).toString(),
+        },
+        quantity: 1,
+    });
+    //Make sure the calculated cost matches amount * quanitity fo each row.
 
     return items;
 }
