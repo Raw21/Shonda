@@ -10,9 +10,32 @@
 // ];
 var SHIPPING = [
     4.99,   //1 item
-    4.99,   //2 items
-    5.99,   //3 items
-    6.99,   //4+ items
+    6.99,   //2 items
+    8.99,   //3 items
+    10.99,   //4 items
+    12.99,   //5 items
+    14.99,   //6 items
+    16.99,   //7 items
+    18.99,   //8 items
+    20.99,   //9 items
+    22.99,   //10 items
+    24.99,   //11 items
+    26.99,   //12 items
+    28.99,   //13 items
+    30.99,   //14 items
+    32.99,   //15 items
+    34.99,   //16 items
+    36.99,   //17 items
+    38.99,   //18 items
+    40.99,   //19 items
+    42.99,   //20 items
+    44.99,   //21 items
+    46.99,   //22 items
+    48.99,   //23 items
+    50.99,   //24 items
+    52.99,   //25 items
+    54.99,   //26 items
+    56.99,   //27+ items
 ];
 
 if (document.readyState == 'loading') {
