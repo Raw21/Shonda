@@ -17,6 +17,8 @@ html {
 header,
 footer {
     font-family: "Parisienne", cursive;
+    overflow: hidden;
+    box-shadow: 0px 2px 10px #ff00ff;
 }
 body {
     min-height: 100vh;
@@ -33,7 +35,119 @@ body {
     background-color: black !important;
     background-position: center;
 }
+nav h1 {
+    padding-bottom: 30px;
+}
 
+#footerLeft {
+    left: 0px;
+}
+#footerRight {
+    right: 0px;
+}
+
+/* mobile */
+@media only screen and (max-width: 599px) {
+    #navLeft,
+    #navRight {
+        display: none;
+    }
+    #footerLeft, #footerRight {
+        display: none;
+    }
+}
+
+/* tablet */
+@media only screen and (min-width: 600px) {
+    #navLeft,
+    #navRight {
+        position: absolute;
+        width: 75px;
+        height: 100%;
+        background-color: #c5b358;
+        top: 0px;
+        transform: skew(-20deg);
+        box-shadow: 3px 3px 5px black;
+    }
+
+    #navRight {
+        right: 30px;
+    }
+
+    #navLeft {
+        left: 30px;
+    }
+    #footerLeft, #footerRight {
+        position: absolute;
+        width: 25px;
+        height: 100%;
+        background-color: #c5b358;
+        top: 0px;
+        transform: skew(-20deg);
+        box-shadow: 3px 3px 5px black;
+    }
+
+}
+/* small desktop */
+@media only screen and (min-width: 768px) {
+    #navLeft,
+    #navRight {
+        position: absolute;
+        width: 100px;
+        height: 100%;
+        background-color: #c5b358;
+        top: 0px;
+        transform: skew(-30deg);
+        box-shadow: 3px 3px 5px black;
+    }
+
+    #navRight {
+        right: 50px;
+    }
+
+    #navLeft {
+        left: 50px;
+    }
+    #footerLeft, #footerRight {
+        position: absolute;
+        width: 75px;
+        height: 100%;
+        background-color: #c5b358;
+        top: 0px;
+        transform: skew(-30deg);
+        box-shadow: 3px 3px 5px black;
+    }
+}
+/* large desktop */
+@media only screen and (min-width: 1200px) {
+    #navLeft,
+    #navRight {
+        position: absolute;
+        width: 100px;
+        height: 100%;
+        background-color: #c5b358;
+        top: 0px;
+        transform: skew(-30deg);
+        box-shadow: 3px 3px 5px black;
+    }
+
+    #navRight {
+        right: 100px;
+    }
+
+    #navLeft {
+        left: 100px;
+    }
+    #footerLeft, #footerRight {
+        position: absolute;
+        width: 75px;
+        height: 100%;
+        background-color: #c5b358;
+        top: 0px;
+        transform: skew(-30deg);
+        box-shadow: 3px 3px 5px black;
+    }
+}
 .nav-cust ul {
     margin: 0;
 }
@@ -71,7 +185,6 @@ body {
 
     background-blend-mode: multiply;
     background-size: cover;
-    padding-bottom: 30px;
 }
 
 .band-name {
@@ -108,7 +221,7 @@ body {
 .main-footer {
     background-color: purple;
     color: white;
-    padding: 0.25em 0;
+    /* padding: 0.25em 0; */
 }
 
 .main-footer-container {
@@ -172,13 +285,17 @@ body {
 .tour-btn {
     max-width: 19%;
 }
-
-
+.shop-item {
+    overflow: hidden;
+}
 
 .shop-item-title {
     font-weight: bold;
     font-size: 1.5em;
     color: #c5b358;
+    position: relative;
+    left: 100%;
+    transition: left 1s;
 }
 .shop-item-image-container {
     box-shadow: 0 0 0.3rem #aaaaaa;
@@ -193,14 +310,11 @@ body {
 .shop-item-details {
     display: flex;
     justify-content: space-around;
-
 }
 
 .shop-item-price {
-
     color: white;
 }
-
 
 .cart-header {
     font-weight: bold;
@@ -323,9 +437,15 @@ body {
     /* display: inline-block; */
     position: absolute;
     transition: width 2s, height 3s;
+    -webkit-transition: width 2s, height 1s;
+    -moz-transition: width 2s, height 1s;
+    -o-transition: width 2s, height 1s;
 }
- 
-.shop-item-image-container:hover .image-cover::before {
+
+.shop-item:hover .image-cover::before {
     width: 0%;
     height: 0%;
-} 
+}
+.shop-item:hover .shop-item-title {
+    left: 0%;
+}
