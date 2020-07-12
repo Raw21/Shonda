@@ -9,7 +9,7 @@
 //     6.99,   //5+ items
 // ];
 var SHIPPING = [
-    3.00,   //1 item
+    4.99,   //1 item
     4.99,   //2 items
     5.99,   //3 items
     6.99,   //4+ items
