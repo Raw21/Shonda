@@ -1,3 +1,20 @@
+//To add more shipping costs, just add additional elements to the SHIPPING 
+// array. For example, if I wanted 4 items to ship for 5.99 as well, but 
+// 6 or more to ship for 6.99, I would change the following:
+// var SHIPPING = [
+//     3.00,   //1 item
+//     4.99,   //2 items
+//     5.99,   //3 items
+//     5.99,   //4 items
+//     6.99,   //5+ items
+// ];
+var SHIPPING = [
+    3.00,   //1 item
+    4.99,   //2 items
+    5.99,   //3 items
+    6.99,   //4+ items
+];
+
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 } else {
@@ -130,16 +147,19 @@ function addItemToCart(title, price, imageSrc) {
 }
 
 function includeShipping() {
-    let cartShipping = document.getElementsByClassName('cart-shipping');
-    let cost = 4.99;
-    if (document.getElementsByClassName('cart-row').length > 4) {
-        cost = 8.99;
+    var cartShipping = document.getElementsByClassName('cart-shipping');
+    var numberItems = getNumberItemsInCart();
+    var cost = SHIPPING[numberItems - 1];
+
+    if (!cost) {
+        cost = SHIPPING[SHIPPING.length - 1];
     }
 
+    //Check if shipping already added so we don't add shipping twice.
     if (!cartShipping[0].getElementsByClassName('shipping').length) {
         var cartRow = document.createElement('div')
         cartRow.classList.add('cart-row')
-        let cartItems = document.getElementsByClassName('cart-items');
+        var cartItems = document.getElementsByClassName('cart-items');
 
 
         var cartRowContents = `
@@ -155,22 +175,28 @@ function includeShipping() {
         cartRow.innerHTML = cartRowContents
         cartShipping[0].append(cartRow)
     }
-    document.getElementsByClassName('shipping-cost')[0].innerText = `$${cost}`;
+    document.getElementsByClassName('shipping-cost')[0].innerText = `$${cost.toFixed(2)}`;
 }
 
 function shouldRemoveShipping() {
+    var numberItems = getNumberItemsInCart();
+    var cost = SHIPPING[numberItems - 1];
+
+    if (!cost) {
+        cost = SHIPPING[SHIPPING.length - 1];
+    }
+
     let cartItems = document.getElementsByClassName('cart-items')[0];
     if (!cartItems.getElementsByClassName('cart-row').length) {
         let cartShipping = document.getElementsByClassName('cart-shipping')[0];
-        while (cartShipping.childNodes) {
+        while (cartShipping.childNodes.length) {
             cartShipping.removeChild(cartShipping.childNodes[0]);
         }
+        document.getElementsByClassName('cart-total-price')[0].innerText = '$0.00';
     }
-    let cost = 4.99;
-    if (document.getElementsByClassName('cart-row').length > 4) {
-        cost = 8.99;
+    else {
+        document.getElementsByClassName('shipping-cost')[0].innerText = `$${cost.toFixed(2)}`;
     }
-    document.getElementsByClassName('shipping-cost')[0].innerText = `$${cost}`;
 
 }
 
@@ -193,6 +219,18 @@ function updateCartTotal() {
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
 }
 
+function getNumberItemsInCart() {
+    var items = collectCartItems();
+    var numberItems = 0;
+    items.forEach(item => {
+        if (item.name !== "Shipping") {
+            numberItems += parseInt(item.quantity);
+        }
+    });
+
+    return numberItems;
+}
+
 function collectCartItems() {
     var items = [];
     var cartRows = document.getElementsByClassName('cart-items')[0].getElementsByClassName('cart-row');
@@ -209,15 +247,18 @@ function collectCartItems() {
     });
 
     var cartShipping = document.getElementsByClassName('cart-shipping')[0];
-    items.push({
-        name: cartShipping.getElementsByClassName('cart-item-title')[0].innerText,
-        unit_amount: {
-            currency_code: 'USD',
-            value: parseFloat(cartShipping.getElementsByClassName('cart-price')[0].innerText.replace('$', '')).toFixed(2).toString(),
-        },
-        quantity: 1,
-    });
-    //Make sure the calculated cost matches amount * quanitity fo each row.
+    //When first item is added to cart, cart shipping hasnt been added to DOM, so we need to
+    //make sure we don't try to access it.
+    if (cartShipping[0]) {
+        items.push({
+            name: cartShipping.getElementsByClassName('cart-item-title')[0].innerText,
+            unit_amount: {
+                currency_code: 'USD',
+                value: parseFloat(cartShipping.getElementsByClassName('cart-price')[0].innerText.replace('$', '')).toFixed(2).toString(),
+            },
+            quantity: 1,
+        });
+    }
 
     return items;
 }

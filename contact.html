@@ -12,14 +12,21 @@
 </head>
 
 <body>
-  <header class="main-header">
-    <nav class="main-nav nav-cust">
-      <ul>
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
-    </nav>
-    <h1 class="band-name band-name-large">Sache's Secrets</h1>
+  <header class="main-header container-fluid">
+    <div class="row">
+      <div class="col">
+        <nav class="main-nav nav-cust">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+        <h1 class="band-name band-name-large">Sache's Secrets</h1>
+        <div id="navLeft"></div>
+        <div id="navRight"></div>
+      </div>
+
+    </div>
   </header>
   <main>
     <div class="container">
@@ -52,9 +59,16 @@
   </main>
   <footer class="main-footer">
     <div class="container main-footer-container">
-      <h3 class="band-name">Sache's Secrets</h3>
-      <ul class="nav footer-nav"></ul>
+      <div class="row">
+        <div class="col">
+          <div id="footerLeft"></div>
+          <div id="footerRight"></div>
+          <h3 class="band-name">Sache's Secrets</h3>
+          <ul class="nav footer-nav"></ul>
+        </div>
 
+      </div>
+    </div>
   </footer>
   <script src="contact.js" async></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -12,7 +12,9 @@
   color: #c5b358;
   text-decoration: none;
 }
-
+nav h1 {
+  padding-bottom: 30px;
+}
 .main-nav {
   text-align: center;
   font-size: 1.1em;
@@ -35,7 +37,6 @@
 
   background-blend-mode: multiply;
   background-size: cover;
-  padding-bottom: 30px;
 }
 .band-name {
   text-align: center;
@@ -50,14 +51,16 @@
 
 header,
 footer {
-    font-family: "Parisienne", cursive;
+  font-family: "Parisienne", cursive;
+  overflow: hidden;
+  box-shadow: 0px 2px 10px #ff00ff;
 }
-:root{
-  --font-color:#555;
-  --font-hover-color:orange;
+:root {
+  --font-color: #555;
+  --font-hover-color: orange;
 }
-body{
-  font-family:"Raleway", sans-serif;
+body {
+  font-family: "Raleway", sans-serif;
   background-image: url("https://i.postimg.cc/Ghq7znfK/thumbnail-Shonda.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -108,17 +111,14 @@ body{
 }
 */
 
-.btn:hover{
-  border-color:var(--font-hover-color);
-  color:var(--font-hover-color);
+.btn:hover {
+  border-color: var(--font-hover-color);
+  color: var(--font-hover-color);
 }
 
-
-
-.focused > .form-label{
-  opacity:1;
-  transform:translateX(0px);
-
+.focused > .form-label {
+  opacity: 1;
+  transform: translateX(0px);
 }
 
 .btn-primary-cust {
@@ -138,7 +138,6 @@ body{
 .main-footer {
   background-color: purple;
   color: white;
-  padding: 0.25em 0;
 }
 
 .main-footer-container {
@@ -149,4 +148,117 @@ body{
 .main-footer-container ul {
   flex-grow: 1;
   text-align: center;
+}
+
+#footerLeft {
+  left: 0px;
+}
+#footerRight {
+  right: 0px;
+}
+
+/* mobile */
+@media only screen and (max-width: 599px) {
+  #navLeft,
+  #navRight {
+    display: none;
+  }
+  #footerLeft,
+  #footerRight {
+    display: none;
+  }
+}
+
+/* tablet */
+@media only screen and (min-width: 600px) {
+  #navLeft,
+  #navRight {
+    position: absolute;
+    width: 75px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-20deg);
+    box-shadow: 3px 3px 5px black;
+  }
+
+  #navRight {
+    right: 30px;
+  }
+
+  #navLeft {
+    left: 30px;
+  }
+  #footerLeft,
+  #footerRight {
+    position: absolute;
+    width: 25px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-20deg);
+    box-shadow: 3px 3px 5px black;
+  }
+}
+/* small desktop */
+@media only screen and (min-width: 768px) {
+  #navLeft,
+  #navRight {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-30deg);
+    box-shadow: 3px 3px 5px black;
+  }
+
+  #navRight {
+    right: 50px;
+  }
+
+  #navLeft {
+    left: 50px;
+  }
+  #footerLeft,
+  #footerRight {
+    position: absolute;
+    width: 75px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-30deg);
+    box-shadow: 3px 3px 5px black;
+  }
+}
+/* large desktop */
+@media only screen and (min-width: 1200px) {
+  #navLeft,
+  #navRight {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-30deg);
+    box-shadow: 3px 3px 5px black;
+  }
+
+  #navRight {
+    right: 100px;
+  }
+
+  #navLeft {
+    left: 100px;
+  }
+  #footerLeft,
+  #footerRight {
+    position: absolute;
+    width: 75px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-30deg);
+    box-shadow: 3px 3px 5px black;
+  }
 }
