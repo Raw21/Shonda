@@ -1,3 +1,43 @@
+//To add more shipping costs, just add additional elements to the SHIPPING 
+// array. For example, if I wanted 4 items to ship for 5.99 as well, but 
+// 6 or more to ship for 6.99, I would change the following:
+// var SHIPPING = [
+//     3.00,   //1 item
+//     4.99,   //2 items
+//     5.99,   //3 items
+//     5.99,   //4 items
+//     6.99,   //5+ items
+// ];
+var SHIPPING = [
+    4.99,   //1 item
+    6.99,   //2 items
+    8.99,   //3 items
+    10.99,   //4 items
+    12.99,   //5 items
+    14.99,   //6 items
+    16.99,   //7 items
+    18.99,   //8 items
+    20.99,   //9 items
+    22.99,   //10 items
+    24.99,   //11 items
+    26.99,   //12 items
+    28.99,   //13 items
+    30.99,   //14 items
+    32.99,   //15 items
+    34.99,   //16 items
+    36.99,   //17 items
+    38.99,   //18 items
+    40.99,   //19 items
+    42.99,   //20 items
+    44.99,   //21 items
+    46.99,   //22 items
+    48.99,   //23 items
+    50.99,   //24 items
+    52.99,   //25 items
+    54.99,   //26 items
+    56.99,   //27+ items
+];
+
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 } else {
@@ -76,6 +116,7 @@ function removeCartItem(event) {
     var buttonClicked = event.target
     buttonClicked.parentElement.parentElement.remove()
     updateCartTotal()
+    shouldRemoveShipping();
 }
 
 function quantityChanged(event) {
@@ -124,7 +165,61 @@ function addItemToCart(title, price, imageSrc) {
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
-    cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
+    cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged);
+    includeShipping();
+}
+
+function includeShipping() {
+    var cartShipping = document.getElementsByClassName('cart-shipping');
+    var numberItems = getNumberItemsInCart();
+    var cost = SHIPPING[numberItems - 1];
+
+    if (!cost) {
+        cost = SHIPPING[SHIPPING.length - 1];
+    }
+
+    //Check if shipping already added so we don't add shipping twice.
+    if (!cartShipping[0].getElementsByClassName('shipping').length) {
+        var cartRow = document.createElement('div')
+        cartRow.classList.add('cart-row')
+        var cartItems = document.getElementsByClassName('cart-items');
+
+
+        var cartRowContents = `
+        <div class="cart-item cart-column shipping">
+            <img class="cart-item-image shipping-image" src="./shipping-fast.svg" width="100" height="100">
+            <span class="cart-item-title">Shipping</span>
+        </div>
+        <span class="cart-price cart-column shipping-cost">$${cost}</span>
+        <div class="cart-quantity cart-column">
+        </div>
+        `
+        cartRow.innerHTML = cartRowContents
+        cartShipping[0].append(cartRow)
+    }
+    document.getElementsByClassName('shipping-cost')[0].innerText = `$${cost.toFixed(2)}`;
+}
+
+function shouldRemoveShipping() {
+    var numberItems = getNumberItemsInCart();
+    var cost = SHIPPING[numberItems - 1];
+
+    if (!cost) {
+        cost = SHIPPING[SHIPPING.length - 1];
+    }
+
+    let cartItems = document.getElementsByClassName('cart-items')[0];
+    if (!cartItems.getElementsByClassName('cart-row').length) {
+        let cartShipping = document.getElementsByClassName('cart-shipping')[0];
+        while (cartShipping.childNodes.length) {
+            cartShipping.removeChild(cartShipping.childNodes[0]);
+        }
+        document.getElementsByClassName('cart-total-price')[0].innerText = '$0.00';
+    }
+    else {
+        document.getElementsByClassName('shipping-cost')[0].innerText = `$${cost.toFixed(2)}`;
+    }
+
 }
 
 function updateCartTotal() {
@@ -139,8 +234,23 @@ function updateCartTotal() {
         var quantity = quantityElement.value
         total = total + (price * quantity)
     }
+
+    var shipping = document.getElementsByClassName('shipping-cost')[0];
+    total += parseFloat(shipping.innerText.replace('$', ''));
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
+}
+
+function getNumberItemsInCart() {
+    var items = collectCartItems();
+    var numberItems = 0;
+    items.forEach(item => {
+        if (item.name !== "Shipping") {
+            numberItems += parseInt(item.quantity);
+        }
+    });
+
+    return numberItems;
 }
 
 function collectCartItems() {
@@ -158,6 +268,20 @@ function collectCartItems() {
         //Make sure the calculated cost matches amount * quanitity fo each row.
     });
 
+    var cartShipping = document.getElementsByClassName('cart-shipping')[0];
+    //When first item is added to cart, cart shipping hasnt been added to DOM, so we need to
+    //make sure we don't try to access it.
+    if (cartShipping[0]) {
+        items.push({
+            name: cartShipping.getElementsByClassName('cart-item-title')[0].innerText,
+            unit_amount: {
+                currency_code: 'USD',
+                value: parseFloat(cartShipping.getElementsByClassName('cart-price')[0].innerText.replace('$', '')).toFixed(2).toString(),
+            },
+            quantity: 1,
+        });
+    }
+
     return items;
 }
 
@@ -166,4 +290,3 @@ function getTotal(items) {
         return acc + (parseFloat(curr.unit_amount.value) * parseFloat(curr.quantity));
     }, 0).toFixed(2);
 }
-
