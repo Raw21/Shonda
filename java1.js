@@ -192,10 +192,6 @@ function includeShipping() {
         </div>
         <span class="cart-price cart-column shipping-cost">$${cost}</span>
         <div class="cart-quantity cart-column">
-<<<<<<< HEAD
-=======
-
->>>>>>> 12dba2ec283fb9d2ac6ca5a7b4e7780431fcf1ac
         </div>
         `
         cartRow.innerHTML = cartRowContents
