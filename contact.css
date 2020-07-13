@@ -90,6 +90,7 @@ body {
   font-size:1.25em;
   transition:all .6s;
 }
+
 .form-control::placeholder{
   color: purple;
 }
@@ -195,6 +196,68 @@ body {
     background-color: #c5b358;
     top: 0px;
     transform: skew(-20deg);
+    box-shadow: 3px 3px 5px black;
+  }
+}
+/* small desktop */
+@media only screen and (min-width: 768px) {
+  #navLeft,
+  #navRight {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-30deg);
+    box-shadow: 3px 3px 5px black;
+  }
+
+  #navRight {
+    right: 50px;
+  }
+
+  #navLeft {
+    left: 50px;
+  }
+  #footerLeft,
+  #footerRight {
+    position: absolute;
+    width: 75px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-30deg);
+    box-shadow: 3px 3px 5px black;
+  }
+}
+/* large desktop */
+@media only screen and (min-width: 1200px) {
+  #navLeft,
+  #navRight {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-30deg);
+    box-shadow: 3px 3px 5px black;
+  }
+
+  #navRight {
+    right: 100px;
+  }
+
+  #navLeft {
+    left: 100px;
+  }
+  #footerLeft,
+  #footerRight {
+    position: absolute;
+    width: 75px;
+    height: 100%;
+    background-color: #c5b358;
+    top: 0px;
+    transform: skew(-30deg);
     box-shadow: 3px 3px 5px black;
   }
 }
